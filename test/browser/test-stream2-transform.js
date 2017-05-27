@@ -1,7 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var PassThrough = require('../../lib/_stream_passthrough');
-var Transform = require('../../lib/_stream_transform');
+//var common = require('readable-stream/common');
+var PassThrough = require('readable-stream/lib/_stream_passthrough');
+var Transform = require('readable-stream/lib/_stream_transform');
+var processNextTick = require('readable-stream/lib/process-nextick-args');
 
 /////
 module.exports = function (t) {
@@ -248,13 +250,13 @@ module.exports = function (t) {
     };
 
     pt.once('readable', function() {
-      process.nextTick(function() {
+      processNextTick(function() {
         pt.write(new Buffer('d'));
         pt.write(new Buffer('ef'), function() {
           pt.end();
           t.end();
         });
-        t.equal(pt.read().toString(), 'abcdef');
+        t.equal(pt.read().toString(), 'abc');
         t.equal(pt.read(), null);
       });
     });
@@ -417,7 +419,7 @@ module.exports = function (t) {
     // read one more time to get the 'end' event
     jp.read();
 
-    process.nextTick(function() {
+    processNextTick(function() {
       t.ok(ended);
       t.end();
     });
@@ -459,7 +461,7 @@ module.exports = function (t) {
     // read one more time to get the 'end' event
     js.read();
 
-    process.nextTick(function() {
+    processNextTick(function() {
       t.ok(ended);
       t.end();
     });
@@ -471,3 +473,5 @@ module.exports = function (t) {
     }
   }
 };
+
+return module.exports;});

@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
-var W = require('../../lib/_stream_writable');
-var D = require('../../lib/_stream_duplex');
+require('readable-stream/common');
+var W = require('readable-stream/../lib/_stream_writable');
+var D = require('readable-stream/../lib/_stream_duplex');
 var assert = require('assert/');
 
 var util = require('util');
@@ -366,3 +367,5 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
+
+return module.exports;});

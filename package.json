@@ -2,7 +2,7 @@
   "name": "readable-stream",
   "version": "2.2.9",
   "description": "Streams3, a user-land copy of the stream library from Node.js",
-  "main": "readable.js",
+  "main": "readable-browser.js",
   "dependencies": {
     "buffer-shims": "~1.0.0",
     "core-util-is": "~1.0.0",

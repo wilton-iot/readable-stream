@@ -1,8 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/').Readable;
 var inherits = require('inherits');
+var processNextTick = require('readable-stream/lib/process-nextick-args');
 
 module.exports = function (t) {
   t.test('push strings', function (t) {
@@ -24,7 +26,7 @@ module.exports = function (t) {
         case 2:
           return this.push('second to last chunk');
         case 3:
-          return process.nextTick(function() {
+          return processNextTick(function() {
             this.push('first chunk');
           }.bind(this));
         default:
@@ -47,3 +49,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

@@ -1,6 +1,7 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var Readable = require('../../').Readable;
+//var common = require('readable-stream/common');
+var Readable = require('readable-stream/').Readable;
 module.exports = function (t) {
   t.test('push order', function (t) {
     t.plan(1);
@@ -31,3 +32,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

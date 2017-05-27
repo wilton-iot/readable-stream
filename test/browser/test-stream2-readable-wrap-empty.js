@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../lib/_stream_readable');
+var Readable = require('readable-stream/lib/_stream_readable');
 var EE = require('events').EventEmitter;
 module.exports = function (t) {
   t.test('wrap empty', function (t) {
@@ -22,3 +23,5 @@ module.exports = function (t) {
 
   })
 }
+
+return module.exports;});

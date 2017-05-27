@@ -1,5 +1,6 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-require('babel-polyfill');
+//require('babel-polyfill');
 var util = require('util');
 for (var i in util) {
   exports[i] = util[i];
@@ -32,7 +33,7 @@ var fs = require('fs');
 var assert = require('assert');
 var os = require('os');
 var child_process = require('child_process');
-var stream = require('../');
+var stream = require('readable-stream/');
 
 /*<replacement>*/
 var util = require('core-util-is');
@@ -649,3 +650,5 @@ if (!util._errnoException) {
     return e;
   };
 }
+
+return module.exports;});

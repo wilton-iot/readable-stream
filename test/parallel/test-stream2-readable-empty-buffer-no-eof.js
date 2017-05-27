@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 test1();
 test2();
@@ -97,3 +98,5 @@ function test2() {
     console.log('ok');
   });
 }
+
+return module.exports;});

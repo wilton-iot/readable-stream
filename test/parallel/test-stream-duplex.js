@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
-var Duplex = require('../../').Transform;
+var Duplex = require('readable-stream/../').Transform;
 
 var stream = new Duplex({ objectMode: true });
 
@@ -32,3 +33,5 @@ process.on('exit', function () {
   assert.strictEqual(read.val, 1);
   assert.strictEqual(written.val, 2);
 });
+
+return module.exports;});

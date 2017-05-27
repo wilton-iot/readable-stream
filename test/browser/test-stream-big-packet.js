@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+////var common = require('readable-stream/common');
 var inherits = require('inherits');
-var stream = require('../../');
+var stream = require('readable-stream/');
 
 module.exports = function (t) {
   t.test('big packet', function (t) {
@@ -60,3 +61,5 @@ module.exports = function (t) {
     }
   });
 }
+
+return module.exports;});

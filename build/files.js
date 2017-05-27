@@ -1,3 +1,4 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /* This file lists the files to be fetched from the node repo
  * in the /lib/ directory which will be placed in the ../lib/
  * directory after having each of the "replacements" in the
@@ -36,10 +37,10 @@ const headRegexp = /(^module.exports = \w+;?)/m
         , '\n$1\n  Duplex = Duplex || require(\'./_stream_duplex\');\n'
       ]
 
-    , altForEachImplReplacement = require('./common-replacements').altForEachImplReplacement
-    , altForEachUseReplacement  = require('./common-replacements').altForEachUseReplacement
-    , altIndexOfImplReplacement = require('./common-replacements').altIndexOfImplReplacement
-    , altIndexOfUseReplacement  = require('./common-replacements').altIndexOfUseReplacement
+    , altForEachImplReplacement = require('readable-stream/common-replacements').altForEachImplReplacement
+    , altForEachUseReplacement  = require('readable-stream/common-replacements').altForEachUseReplacement
+    , altIndexOfImplReplacement = require('readable-stream/common-replacements').altIndexOfImplReplacement
+    , altIndexOfUseReplacement  = require('readable-stream/common-replacements').altIndexOfUseReplacement
 
     , utilReplacement = [
           /^const util = require\('util'\);/m
@@ -84,9 +85,9 @@ const headRegexp = /(^module.exports = \w+;?)/m
         , 'isArray'
       ]
 
-    , objectKeysDefine = require('./common-replacements').objectKeysDefine
+    , objectKeysDefine = require('readable-stream/common-replacements').objectKeysDefine
 
-    , objectKeysReplacement = require('./common-replacements').objectKeysReplacement
+    , objectKeysReplacement = require('readable-stream/common-replacements').objectKeysReplacement
 
     , eventEmittterReplacement = [
         /^(const EE = require\('events'\));$/m
@@ -163,7 +164,7 @@ const headRegexp = /(^module.exports = \w+;?)/m
     /const Buffer = require\('buffer'\)\.Buffer;/,
     `const Buffer = require('buffer').Buffer;
 /*<replacement>*/
-  const bufferShim = require('buffer-shims');
+  const bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/`
   ]
   , bufferStaticMethods = [
@@ -281,3 +282,5 @@ module.exports['internal/streams/BufferList.js'] = [
     bufferShimFix
   , bufferStaticMethods
 ]
+
+return module.exports;});

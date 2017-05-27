@@ -1,7 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var R = require('../../lib/_stream_readable');
-var W = require('../../lib/_stream_writable');
+//var common = require('readable-stream/common');
+var processNextTick = require('readable-stream/lib/process-nextick-args');
+var R = require('readable-stream/lib/_stream_readable');
+var W = require('readable-stream/lib/_stream_writable');
 module.exports = function (t) {
   t.test('base64 single char read end', function (t) {
   t.plan(1);
@@ -39,3 +41,5 @@ module.exports = function (t) {
 
 })
 }
+
+return module.exports;});

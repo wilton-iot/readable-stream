@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
-var Readable = require('../../').Readable;
+require('readable-stream/common');
+var Readable = require('readable-stream/../').Readable;
 var assert = require('assert/');
 
 var s = new Readable({
@@ -31,3 +32,5 @@ process.on('exit', function () {
   assert.deepStrictEqual(s._readableState.buffer.join(','), '1,2,3,4,5,6');
   console.log('ok');
 });
+
+return module.exports;});

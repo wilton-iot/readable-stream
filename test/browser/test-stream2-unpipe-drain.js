@@ -1,6 +1,7 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var stream = require('../../');
+//var common = require('readable-stream/common');
+var stream = require('readable-stream/');
 
 var crypto = require('crypto');
 
@@ -63,3 +64,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

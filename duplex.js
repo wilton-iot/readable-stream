@@ -1,1 +1,4 @@
-module.exports = require('./readable').Duplex
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
+module.exports = require('readable-stream/readable').Duplex
+
+return module.exports;});

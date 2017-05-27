@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
 
 // this test verifies that passing a huge number to read(size)
@@ -9,7 +10,7 @@ var assert = require('assert/');
 // more data continuously, but without triggering a nextTick
 // warning or RangeError.
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 // throw an error if we trigger a nextTick warning.
 process.throwDeprecation = true;
@@ -50,3 +51,5 @@ process.on('exit', function (code) {
   assert.strictEqual(depth, 0);
   console.log('ok');
 });
+
+return module.exports;});

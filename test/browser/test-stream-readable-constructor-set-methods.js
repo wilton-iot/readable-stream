@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/').Readable;
 module.exports = function (t) {
   t.test('readable constructor set methods', function (t) {
     t.plan(2);
@@ -20,3 +21,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

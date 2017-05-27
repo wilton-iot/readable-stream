@@ -1,6 +1,7 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var Readable = require('../../lib/_stream_readable');
+//var common = require('readable-stream/common');
+var Readable = require('readable-stream/lib/_stream_readable');
 module.exports = function (t) {
   t.test('non empty end', function (t) {
     t.plan(4);
@@ -55,3 +56,5 @@ module.exports = function (t) {
     }
   });
 }
+
+return module.exports;});

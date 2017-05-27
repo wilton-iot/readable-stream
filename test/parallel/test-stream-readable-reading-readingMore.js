@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 var readable = new Readable({
   read: function (size) {}
@@ -64,3 +65,5 @@ readable.unshift('unshifted');
 
 // end
 readable.push(null);
+
+return module.exports;});

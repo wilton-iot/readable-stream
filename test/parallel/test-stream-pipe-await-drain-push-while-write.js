@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
 var assert = require('assert/');
 
 var awaitDrainStates = [1, // after first chunk before callback
@@ -41,3 +42,5 @@ var readable = new stream.Readable({
 });
 
 readable.pipe(writable);
+
+return module.exports;});

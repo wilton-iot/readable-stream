@@ -1,5 +1,6 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 var Stream = require('stream').Stream;
 
 module.exports = function (t) {
@@ -42,8 +43,8 @@ module.exports = function (t) {
   t.test('Error With Removed Listener Throws', function (t) {
     t.plan(2);
     var EE = require('events').EventEmitter;
-    var R = require('../../').Readable;
-    var W = require('../../').Writable;
+    var R = require('readable-stream/').Readable;
+    var W = require('readable-stream/').Writable;
 
     var r = new R();
     var w = new W();
@@ -71,8 +72,8 @@ module.exports = function (t) {
   t.test('Error With Removed Listener Throws', function (t) {
     t.plan(2);
     var EE = require('events').EventEmitter;
-    var R = require('../../').Readable;
-    var W = require('../../').Writable;
+    var R = require('readable-stream/').Readable;
+    var W = require('readable-stream/').Writable;
 
     var r = new R();
     var w = new W();
@@ -100,3 +101,5 @@ module.exports = function (t) {
     }
   });
 }
+
+return module.exports;});

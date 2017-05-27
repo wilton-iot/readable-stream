@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
 
-var stream = require('../../');
+var stream = require('readable-stream/../');
 var PassThrough = stream.PassThrough;
 
 var src = new PassThrough({ objectMode: true });
@@ -30,3 +31,5 @@ var int = setInterval(common.mustCall(function () {
     src.write(i++);
   }
 }, expect.length + 1), 1);
+
+return module.exports;});

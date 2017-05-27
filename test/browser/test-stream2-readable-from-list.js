@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 // Flags: --expose_internals
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
-var fromList = require('../../lib/_stream_readable')._fromList;
-var BufferList = require('../../lib/internal/streams/BufferList');
+//require('readable-stream/common');
+var fromList = require('readable-stream/lib/_stream_readable')._fromList;
+var BufferList = require('readable-stream/lib/internal/streams/BufferList');
 
 function bufferListFromArray(arr) {
   var bl = new BufferList();
@@ -66,3 +67,5 @@ module.exports = function (t) {
     t.end();
   });
 }
+
+return module.exports;});

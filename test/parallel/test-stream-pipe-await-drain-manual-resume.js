@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
 var assert = require('assert/');
 
 // A consumer stream with a very low highWaterMark, which starts in a state
@@ -77,3 +78,5 @@ writable.on('finish', common.mustCall(function () {
   assert.strictEqual(readable._readableState.awaitDrain, 0, 'awaitDrain not 0 after all chunks are written');
   // Everything okay, all chunks were written.
 }));
+
+return module.exports;});

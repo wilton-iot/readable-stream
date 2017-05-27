@@ -1,11 +1,12 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
 
-var Stream = require('../../');
-var Readable = require('../../').Readable;
+var Stream = require('readable-stream/../');
+var Readable = require('readable-stream/../').Readable;
 
 var r = new Readable();
 var N = 256;
@@ -41,3 +42,5 @@ r.on('readable', function () {
 });
 
 r.pipe(w);
+
+return module.exports;});

@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
 
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
-var stream = require('../../');
+var stream = require('readable-stream/../');
 
 var r = new stream.Readable({
   read: function () {}
@@ -34,3 +35,5 @@ r2.on('data', common.mustCall(function (chunk) {
 }));
 
 r2.push(bufferShim.from('Testing readableListening state'));
+
+return module.exports;});

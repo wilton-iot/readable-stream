@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 // Flags: --expose_internals
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
-var BufferList = require('../../lib/internal/streams/BufferList');
+var BufferList = require('readable-stream/../lib/internal/streams/BufferList');
 
 // Test empty buffer list.
 var emptyList = new BufferList();
@@ -27,3 +28,5 @@ assert.strictEqual(list.join(','), 'foo');
 var shifted = list.shift();
 assert.strictEqual(shifted, 'foo');
 assert.deepStrictEqual(list, new BufferList());
+
+return module.exports;});

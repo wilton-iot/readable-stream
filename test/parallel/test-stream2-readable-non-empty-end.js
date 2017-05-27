@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
-var Readable = require('../../lib/_stream_readable');
+var Readable = require('readable-stream/../lib/_stream_readable');
 
 var len = 0;
 var chunks = new Array(10);
@@ -51,3 +52,5 @@ function next() {
   r = test.read();
   assert.strictEqual(r, null);
 }
+
+return module.exports;});

@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
-var stream = require('../../');
+var stream = require('readable-stream/../');
 
 var chunk = bufferShim.from('hallo');
 
@@ -54,3 +55,5 @@ process.on('exit', function () {
   assert(src._readableState.length >= src._readableState.highWaterMark);
   console.log('ok');
 });
+
+return module.exports;});

@@ -1,11 +1,12 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
 
-var common = require('../common');
+var common = require('readable-stream/common');
 
 var assert = require('assert/');
-var stream = require('../../');
+var stream = require('readable-stream/../');
 
 var writable = new stream.Writable();
 
@@ -21,3 +22,5 @@ writable.end('testing ended state', common.mustCall(function () {
 }));
 
 assert.strictEqual(writable._writableState.ended, true);
+
+return module.exports;});

@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
 // This test asserts that Stream.prototype.pipe does not leave listeners
 // hanging on the source or dest.
 
-var common = require('../common');
-var stream = require('../../');
+//var common = require('readable-stream/common');
+var stream = require('readable-stream/');
 var inherits = require('inherits');
 module.exports = function (t) {
   t.test('pipe cleanup', function (t) {
@@ -106,3 +107,5 @@ module.exports = function (t) {
     t.end();
   });
 }
+
+return module.exports;});

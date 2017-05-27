@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
-var Readable = require('../../lib/_stream_readable');
-var Writable = require('../../lib/_stream_writable');
+var Readable = require('readable-stream/../lib/_stream_readable');
+var Writable = require('readable-stream/../lib/_stream_writable');
 var util = require('util');
 
 util.inherits(TestReadable, Readable);
@@ -49,3 +50,5 @@ setTimeout(common.mustCall(function () {
   w.on('finish', common.mustCall(function () {}));
   piper.pipe(w);
 }), 1);
+
+return module.exports;});

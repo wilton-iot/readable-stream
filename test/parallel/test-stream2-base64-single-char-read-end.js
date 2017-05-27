@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var R = require('../../lib/_stream_readable');
-var W = require('../../lib/_stream_writable');
+var common = require('readable-stream/common');
+var R = require('readable-stream/../lib/_stream_readable');
+var W = require('readable-stream/../lib/_stream_writable');
 var assert = require('assert/');
 
 var src = new R({ encoding: 'base64' });
@@ -36,3 +37,5 @@ src.pipe(dst);
 var timeout = setTimeout(function () {
   common.fail('timed out waiting for _write');
 }, 100);
+
+return module.exports;});

@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Stream = require('../../');
-var Readable = require('../../').Readable;
+var stream = require('readable-stream/');
+var Readable = require('readable-stream/').Readable;
 module.exports = function (t) {
   t.test('readable legacy drain', function (t) {
     var r = new Readable();
@@ -50,3 +51,5 @@ module.exports = function (t) {
     r.pipe(w);
 });
 }
+
+return module.exports;});

@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../lib/_stream_readable');
-var Writable = require('../../lib/_stream_writable');
+var Readable = require('readable-stream/lib/_stream_readable');
+var Writable = require('readable-stream/lib/_stream_writable');
 var EE = require('events').EventEmitter;
 var run = 0;
 function runTest(t, highWaterMark, objectMode, produce) {
@@ -84,3 +85,5 @@ module.exports = function (t) {
     runTest(t, 1, true, function() { return objectChunks.shift(); });
   });
 }
+
+return module.exports;});

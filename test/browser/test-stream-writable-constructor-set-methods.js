@@ -1,6 +1,7 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var Writable = require('../../').Writable;
+//var common = require('readable-stream/common');
+var Writable = require('readable-stream/').Writable;
 
 module.exports = function (t) {
   t.test('writable constructor set methods', function (t){
@@ -38,3 +39,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

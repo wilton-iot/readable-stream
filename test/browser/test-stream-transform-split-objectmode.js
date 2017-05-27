@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Transform = require('../../').Transform;
+var Transform = require('readable-stream/').Transform;
 module.exports = function (t) {
   t.test('transform split objectmode', function (t) {
     t.plan(10);
@@ -56,3 +57,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

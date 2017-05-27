@@ -1,3 +1,4 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
 var common = require('../common');
 var stream = require('../../');
@@ -40,3 +41,5 @@ module.exports = function (t) {
     reader.push(buffer);
   });
 };
+
+return module.exports;});

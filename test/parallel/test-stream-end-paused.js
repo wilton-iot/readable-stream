@@ -1,12 +1,13 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
 
 // Make sure we don't miss the end event for paused 0-length streams
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 var stream = new Readable();
 var calledRead = false;
 stream._read = function () {
@@ -29,3 +30,5 @@ process.on('exit', function () {
   assert(calledRead);
   console.log('ok');
 });
+
+return module.exports;});

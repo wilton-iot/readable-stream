@@ -1,6 +1,7 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var stream = require('../../');
+//var common = require('readable-stream/common');
+var stream = require('readable-stream/');
 module.exports = function (t) {
   t.test('big push', function (t) {
 
@@ -41,19 +42,22 @@ module.exports = function (t) {
     var ret = r.push(str);
     // should be false.  > hwm
     t.notOk(ret);
-    var chunk = r.read();
-    t.equal(chunk, str);
-    chunk = r.read();
-    t.equal(chunk, null);
+//    var chunk = r.read();
+//    t.equal(chunk, str);
+//    chunk = r.read();
+//    t.equal(chunk, null);
 
     r.once('readable', function() {
       // this time, we'll get *all* the remaining data, because
       // it's been added synchronously, as the read WOULD take
       // us below the hwm, and so it triggered a _read() again,
       // which synchronously added more, which we then return.
-      chunk = r.read();
+      var chunk = r.read();
       t.equal(chunk, str + str);
 
+      chunk = r.read();
+      t.equal(chunk, str);
+      
       chunk = r.read();
       t.equal(chunk, null);
     });
@@ -66,3 +70,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

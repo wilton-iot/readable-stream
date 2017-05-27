@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
 var assert = require('assert/');
 
 // This is very similar to test-stream-pipe-cleanup-pause.js.
@@ -52,3 +53,5 @@ reader.pipe(writer1);
 reader.pipe(writer2);
 reader.pipe(writer3);
 reader.push(buffer);
+
+return module.exports;});

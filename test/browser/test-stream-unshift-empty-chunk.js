@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
 // This test verifies that stream.unshift(Buffer(0)) or
 // stream.unshift('') does not set state.reading=false.
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/').Readable;
 module.exports = function (t) {
   t.test('unshift empty chunk', function (t) {
     t.plan(1);
@@ -61,3 +62,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

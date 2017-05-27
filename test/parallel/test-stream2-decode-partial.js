@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
-var Readable = require('../../lib/_stream_readable');
+require('readable-stream/common');
+var Readable = require('readable-stream/../lib/_stream_readable');
 var assert = require('assert/');
 
 var buf = '';
@@ -23,3 +24,5 @@ readable.on('data', function (data) {
 process.on('exit', function () {
   assert.strictEqual(buf, '€¢');
 });
+
+return module.exports;});

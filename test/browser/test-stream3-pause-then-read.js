@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream/');
 var Readable = stream.Readable;
 var Writable = stream.Writable;
 
@@ -148,3 +149,5 @@ module.exports = function (t){
     }
   });
 }
+
+return module.exports;});

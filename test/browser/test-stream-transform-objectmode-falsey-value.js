@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream/');
 var PassThrough = stream.PassThrough;
 module.exports = function (t) {
   t.test('transform objectmode falsey value', function (t) {
@@ -34,3 +35,5 @@ module.exports = function (t) {
     }, 10);
   });
 }
+
+return module.exports;});

@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 
 var util = require('util');
-var stream = require('../../');
+var stream = require('readable-stream/../');
 
 var Read = function () {
   stream.Readable.call(this);
@@ -39,3 +40,5 @@ process.on('exit', function (c) {
 });
 
 read.pipe(write);
+
+return module.exports;});

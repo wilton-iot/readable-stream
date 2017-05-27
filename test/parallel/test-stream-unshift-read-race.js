@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
 
 // This test verifies that:
@@ -11,7 +12,7 @@ var assert = require('assert/');
 // 3. push() after the EOF signaling null is an error.
 // 4. _read() is not called after pushing the EOF null chunk.
 
-var stream = require('../../');
+var stream = require('readable-stream/../');
 var hwm = 10;
 var r = stream.Readable({ highWaterMark: hwm });
 var chunks = 10;
@@ -107,3 +108,5 @@ process.on('exit', function () {
   assert.strictEqual(written.length, 18);
   console.log('ok');
 });
+
+return module.exports;});

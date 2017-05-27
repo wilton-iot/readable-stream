@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream/');
 
 var queue = [];
 for (var decode = 0; decode < 2; decode++) {
@@ -103,3 +104,5 @@ function test(decode, uncork, multi) {
     });
   }
 }
+
+return module.exports;});

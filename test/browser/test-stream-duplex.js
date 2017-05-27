@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Duplex = require('../../').Transform;
+var Duplex = require('readable-stream/').Transform;
 
 var stream = new Duplex({ objectMode: true });
 module.exports = function (t) {
@@ -33,3 +34,5 @@ module.exports = function (t) {
     });
   });
 }
+
+return module.exports;});

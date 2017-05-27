@@ -1,5 +1,6 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var Stream = require('../../');
+var stream = require('readable-stream/');
 
 module.exports = function (t) {
   t.tets('pipe without listenerCount', function (t) {
@@ -25,3 +26,5 @@ module.exports = function (t) {
 
   });
 }
+
+return module.exports;});

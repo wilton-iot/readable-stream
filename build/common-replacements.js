@@ -1,3 +1,4 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 module.exports.altForEachImplReplacement = [
     /$/
   ,   '\nfunction forEach (xs, f) {\n'
@@ -44,7 +45,7 @@ module.exports.objectKeysReplacement = [
 module.exports.bufferShimFix = [
   /^('use strict';)$/m,
   `/*<replacement>*/
- const bufferShim = require('buffer-shims');
+ const bufferShim = require('readable-stream/lib/buffer-shims');
  /*</replacement>*/`
 ]
 
@@ -52,3 +53,5 @@ module.exports.bufferStaticMethods = [
   /Buffer\.((?:alloc)|(?:allocUnsafe)|(?:from))/g,
   `bufferShim.$1`
 ]
+
+return module.exports;});

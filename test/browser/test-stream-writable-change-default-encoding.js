@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream/');
 var inherits = require('inherits');
 
 function MyWritable(fn, options) {
@@ -62,3 +63,5 @@ module.exports = function (t) {
     t.test('checkVairableCaseEncoding', checkVairableCaseEncoding);
   });
 }
+
+return module.exports;});

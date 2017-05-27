@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 var assert = require('assert/');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 {
   // First test, not reading when the readable is added.
@@ -64,3 +65,5 @@ var Readable = require('../../').Readable;
     _r2.on('readable', common.mustCall(function () {}));
   }, 1);
 }
+
+return module.exports;});

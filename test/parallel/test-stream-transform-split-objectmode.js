@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
 
-var Transform = require('../../').Transform;
+var Transform = require('readable-stream/../').Transform;
 
 var parser = new Transform({ readableObjectMode: true });
 
@@ -51,3 +52,5 @@ serializer.write({ val: 42 });
 process.on('exit', function () {
   assert.strictEqual(serialized[0], 42);
 });
+
+return module.exports;});

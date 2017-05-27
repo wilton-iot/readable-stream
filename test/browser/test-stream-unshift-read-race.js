@@ -1,5 +1,6 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
 // This test verifies that:
 // 1. unshift() does not cause colliding _read() calls.
@@ -8,7 +9,7 @@ var common = require('../common');
 // 3. push() after the EOF signaling null is an error.
 // 4. _read() is not called after pushing the EOF null chunk.
 
-var stream = require('../../');
+var stream = require('readable-stream/');
 module.exports = function (t) {
   t.test('unshift read race', function (tape) {
     var hwm = 10;
@@ -108,3 +109,5 @@ module.exports = function (t) {
 
   });
 }
+
+return module.exports;});

@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
-var R = require('../../lib/_stream_readable');
+var R = require('readable-stream/../lib/_stream_readable');
 var util = require('util');
 
 // tiny node-tap lookalike.
@@ -230,3 +231,5 @@ test('chainable', function (t) {
   t.equal(tr.setEncoding('utf8'), tr);
   t.end();
 });
+
+return module.exports;});

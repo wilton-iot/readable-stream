@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
-var PassThrough = require('../../lib/_stream_passthrough');
-var Transform = require('../../lib/_stream_transform');
+var PassThrough = require('readable-stream/../lib/_stream_passthrough');
+var Transform = require('readable-stream/../lib/_stream_transform');
 
 // tiny node-tap lookalike.
 var tests = [];
@@ -497,3 +498,5 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
+
+return module.exports;});

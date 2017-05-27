@@ -1,8 +1,9 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
 
 var r = new stream.Stream();
 r.listenerCount = undefined;
@@ -19,3 +20,5 @@ w.on('error', common.mustCall(noop));
 r.pipe(w);
 
 function noop() {}
+
+return module.exports;});

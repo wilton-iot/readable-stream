@@ -1,9 +1,10 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
-var Readable = require('../../').Readable;
-var Writable = require('../../').Writable;
+require('readable-stream/common');
+var Readable = require('readable-stream/../').Readable;
+var Writable = require('readable-stream/../').Writable;
 var assert = require('assert/');
 
 var EE = require('events').EventEmitter;
@@ -103,3 +104,5 @@ function end() {
     assert(ended);
   });
 }
+
+return module.exports;});

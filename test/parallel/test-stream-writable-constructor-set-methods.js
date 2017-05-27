@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
-require('../common');
+require('readable-stream/common');
 var assert = require('assert/');
 
-var Writable = require('../../').Writable;
+var Writable = require('readable-stream/../').Writable;
 
 var _writeCalled = false;
 function _write(d, e, n) {
@@ -35,3 +36,5 @@ process.on('exit', function () {
   assert.strictEqual(dLength, 2);
   assert(_writevCalled);
 });
+
+return module.exports;});

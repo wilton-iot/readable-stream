@@ -1,6 +1,7 @@
-require('../common');
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
+//require('readable-stream/common');
 var inherits = require('inherits');
-var stream = require('../../');
+var stream = require('readable-stream/');
 var WritableStream = stream.Writable;
 module.exports = function(t) {
   t.test('should bea ble to write sync', function(t) {
@@ -37,3 +38,5 @@ module.exports = function(t) {
     t.end();
   });
 }
+
+return module.exports;});

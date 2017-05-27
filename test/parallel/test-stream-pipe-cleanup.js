@@ -1,10 +1,11 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 /*<replacement>*/
-var bufferShim = require('buffer-shims');
+var bufferShim = require('readable-stream/lib/buffer-shims');
 /*</replacement>*/
 // This test asserts that Stream.prototype.pipe does not leave listeners
 // hanging on the source or dest.
-require('../common');
-var stream = require('../../');
+require('readable-stream/common');
+var stream = require('readable-stream/../');
 var assert = require('assert/');
 var util = require('util');
 
@@ -106,3 +107,5 @@ var util = require('util');
   assert.strictEqual(w.listeners('end').length, 0);
   assert.strictEqual(w.listeners('close').length, 0);
 })();
+
+return module.exports;});

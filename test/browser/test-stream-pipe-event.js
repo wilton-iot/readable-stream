@@ -1,6 +1,7 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
-var stream = require('../../');
+//var common = require('readable-stream/common');
+var stream = require('readable-stream/');
 var inherits = require('inherits');
 module.exports = function (t) {
   t.test('pipe event', function (t) {
@@ -30,3 +31,5 @@ module.exports = function (t) {
     t.ok(passed);
   });
 }
+
+return module.exports;});

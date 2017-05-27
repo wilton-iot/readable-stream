@@ -1,7 +1,8 @@
+define(function(){var require = WILTON_requiresync;var module = {exports: {}};var exports = module.exports;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 var assert = require('assert');
-var stream = require('../../');
+var stream = require('readable-stream/');
 module.exports = function (t) {
   t.test('Error Listener Catches', function (t) {
     var count = 1000;
@@ -86,3 +87,5 @@ module.exports = function (t) {
     t.end();
   });
 }
+
+return module.exports;});
