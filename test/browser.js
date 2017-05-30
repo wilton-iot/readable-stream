@@ -11,7 +11,7 @@ if (!global.console.error) {
 if (!global.console.info) {
   global.console.info = global.console.log;
 }
-var test = require('tape');
+var test = require('tape-compat');
 
 test('streams', function (t) {
   require('readable-stream/test/browser/test-stream-big-packet')(t);
