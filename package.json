@@ -50,5 +50,16 @@
       "lib/**.js"
     ]
   },
-  "license": "MIT"
+  "license": "MIT",
+  "wilton": {
+    "excludes": [
+      "build",
+      "doc",
+      "examples",
+      "test",
+      "duplex-browser",
+      "readable-browser",
+      "writable-browser"
+    ]
+  }
 }
