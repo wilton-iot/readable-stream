@@ -1,7 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
-var PassThrough = require('../../lib/_stream_passthrough');
-var Transform = require('../../lib/_stream_transform');
+//var common = require('readable-stream/common');
+var PassThrough = require('readable-stream').PassThrough;
+var Transform = require('readable-stream').Transform;
+var nextTick = require("process-nextick-args");
 
 /////
 module.exports = function (t) {
@@ -248,7 +250,7 @@ module.exports = function (t) {
     };
 
     pt.once('readable', function() {
-      process.nextTick(function() {
+      nextTick(function() {
         pt.write(new Buffer('d'));
         pt.write(new Buffer('ef'), function() {
           pt.end();
@@ -471,3 +473,5 @@ module.exports = function (t) {
     }
   }
 };
+
+require = requireOrig;});

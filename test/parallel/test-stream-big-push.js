@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var assert = require('assert/');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var assert = require('assert');
+var stream = require('readable-stream/../');
 var str = 'asdfasdfasdfasdfasdf';
 
 var r = new stream.Readable({
@@ -53,3 +54,5 @@ r.once('readable', function () {
   chunk = r.read();
   assert.strictEqual(chunk, null);
 });
+
+require = requireOrig;});

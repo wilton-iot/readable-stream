@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
 
 var r = new stream.Stream();
 r.listenerCount = undefined;
@@ -19,3 +20,5 @@ w.on('error', common.mustCall(noop));
 r.pipe(w);
 
 function noop() {}
+
+require = requireOrig;});

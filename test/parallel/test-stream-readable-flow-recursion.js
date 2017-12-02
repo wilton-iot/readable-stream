@@ -1,15 +1,16 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 
 // this test verifies that passing a huge number to read(size)
 // will push up the highWaterMark, and cause the stream to read
 // more data continuously, but without triggering a nextTick
 // warning or RangeError.
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 // throw an error if we trigger a nextTick warning.
 process.throwDeprecation = true;
@@ -50,3 +51,5 @@ process.on('exit', function (code) {
   assert.strictEqual(depth, 0);
   console.log('ok');
 });
+
+require = requireOrig;});

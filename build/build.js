@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 #!/usr/bin/env node
 
 const hyperquest  = require('hyperquest')
@@ -19,8 +20,8 @@ const hyperquest  = require('hyperquest')
         RegExp('((?:Node-core )|(?:https\:\/\/nodejs\.org\/dist\/)v)' + nodeVersionRegexString, 'g')
 
     , readmePath  = path.join(__dirname, '..', 'README.md')
-    , files       = require('./files')
-    , testReplace = require('./test-replacements')
+    , files       = require('readable-stream/files')
+    , testReplace = require('readable-stream/test-replacements')
 
     , downloadurl = `https://nodejs.org/dist/v${nodeVersion}/node-v${nodeVersion}.tar.gz`
     , src         = path.join(__dirname, `node-v${nodeVersion}`)
@@ -171,3 +172,5 @@ process.once('beforeExit', function () {
     console.log('Removed', src)
   })
 })
+
+require = requireOrig;});

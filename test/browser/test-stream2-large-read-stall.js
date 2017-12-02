@@ -1,5 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 module.exports = function (t) {
   t.test('large object read stall', function (t) {
 
@@ -11,7 +12,7 @@ module.exports = function (t) {
     var PUSHCOUNT = 1000;
     var HWM = 50;
 
-    var Readable = require('../../').Readable;
+    var Readable = require('readable-stream').Readable;
     var r = new Readable({
       highWaterMark: HWM
     });
@@ -60,3 +61,5 @@ module.exports = function (t) {
 
   });
 }
+
+require = requireOrig;});

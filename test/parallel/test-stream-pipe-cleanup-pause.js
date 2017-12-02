@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
 
 var reader = new stream.Readable();
 var writer1 = new stream.Writable();
@@ -37,3 +38,5 @@ writer2._write = common.mustCall(function (chunk, encoding, cb) {
 
 reader.pipe(writer1);
 reader.push(buffer);
+
+require = requireOrig;});

@@ -1,18 +1,22 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
-var stream = require('../../');
+//var common = require('readable-stream/common');
+var stream = require('readable-stream');
 
-var crypto = require('crypto');
+//var crypto = require('crypto');
+var random = require("random");
+var engine = random.engines.mt19937()
+var nextTick = require("process-nextick-args");
 
 var inherits = require('inherits');
 module.exports = function (t) {
   t.test('unpipe drain', function (t) {
-    try {
-      crypto.randomBytes(9);
-    } catch(_) {
-      t.ok(true, 'does not suport random, skipping');
-      return t.end();
-    }
+//    try {
+//      crypto.randomBytes(9);
+//    } catch(_) {
+//      t.ok(true, 'does not suport random, skipping');
+//      return t.end();
+//    }
     function TestWriter() {
       stream.Writable.call(this);
     }
@@ -33,7 +37,7 @@ module.exports = function (t) {
 
     TestReader.prototype._read = function(size) {
       this.reads += 1;
-      this.push(crypto.randomBytes(size));
+      this.push(random.string()(engine, size));
     };
 
     var src1 = new TestReader();
@@ -42,12 +46,12 @@ module.exports = function (t) {
     src1.pipe(dest);
 
     src1.once('readable', function() {
-      process.nextTick(function() {
+      nextTick(function() {
 
         src2.pipe(dest);
 
         src2.once('readable', function() {
-          process.nextTick(function() {
+          nextTick(function() {
 
             src1.unpipe(dest);
           });
@@ -63,3 +67,5 @@ module.exports = function (t) {
     });
   });
 }
+
+require = requireOrig;});

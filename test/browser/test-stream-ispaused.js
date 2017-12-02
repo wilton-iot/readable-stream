@@ -1,7 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('../common');
 
-var stream = require('../../');
+var stream = require('readable-stream');
 module.exports = function (t) {
   t.test('is paused', function (t) {
     var readable = new stream.Readable();
@@ -25,3 +26,5 @@ module.exports = function (t) {
     t.end();
   });
 }
+
+require = requireOrig;});

@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('../common');
 
-var Readable = require('../../lib/_stream_readable');
-var Writable = require('../../lib/_stream_writable');
+var Readable = require('readable-stream').Readable;
+var Writable = require('readable-stream').Writable;
 var inherits = require('inherits');
 module.exports = function (t) {
   t.test('pipe after end', function (t) {
@@ -62,3 +63,5 @@ module.exports = function (t) {
     });
   });
 }
+
+require = requireOrig;});

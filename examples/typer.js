@@ -1,6 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var fs = require('fs');
 var fst = fs.createReadStream(__filename);
-var Readable = require('../readable.js');
+var Readable = require('readable-stream/readable.js');
 var rst = new Readable();
 rst.wrap(fst);
 
@@ -15,3 +16,5 @@ process.stdin.on('data', function() {
   process.stdout.write(c);
 });
 process.stdin.resume();
+
+require = requireOrig;});

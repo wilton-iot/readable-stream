@@ -1,7 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream').Readable;
+var nextTick = require("process-nextick-args");
 
 module.exports = function (t) {
   t.test('readable empty buffer no eof 1', function (t) {
@@ -32,7 +34,7 @@ module.exports = function (t) {
           return r.push(new Buffer(0)); // Not-EOF!
         case 3:
           setTimeout(r.read.bind(r, 0), 50);
-          return process.nextTick(function() {
+          return nextTick(function() {
             return r.push(new Buffer(0));
           });
         case 4:
@@ -89,3 +91,5 @@ module.exports = function (t) {
     flow();
   });
 }
+
+require = requireOrig;});

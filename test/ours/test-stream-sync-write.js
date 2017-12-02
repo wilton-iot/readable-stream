@@ -1,6 +1,7 @@
-require('../common');
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+require('readable-stream/common');
 var util = require('util');
-var stream = require('../../');
+var stream = require('readable-stream/../');
 var WritableStream = stream.Writable;
 
 
@@ -34,3 +35,5 @@ var externalStream = new ExternalStream(internalStream);
 for (var i = 0; i < 2000; i++) {
     externalStream.write(i.toString());
 }
+
+require = requireOrig;});

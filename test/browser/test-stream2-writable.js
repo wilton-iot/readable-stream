@@ -1,7 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
-var W = require('../../lib/_stream_writable');
-var D = require('../../lib/_stream_duplex');
+//var common = require('readable-stream/common');
+var W = require('readable-stream').Writable;
+var D = require('readable-stream').Duplex;
+var nextTick = require("process-nextick-args");
 
 var inherits = require('inherits');
 inherits(TestWriter, W);
@@ -296,7 +298,7 @@ module.exports = function (t) {
     });
     w.end('this is the end');
     w.end('and so is this');
-    process.nextTick(function() {
+    nextTick(function() {
       t.ok(gotError);
       t.end();
     });
@@ -358,7 +360,7 @@ module.exports = function (t) {
   test('finish is emitted if last chunk is empty', function(t) {
     var w = new W();
     w._write = function(chunk, e, cb) {
-      process.nextTick(cb);
+      nextTick(cb);
     };
     w.on('finish', function() {
       t.end();
@@ -373,3 +375,5 @@ module.exports = function (t) {
     }
   }
 }
+
+require = requireOrig;});

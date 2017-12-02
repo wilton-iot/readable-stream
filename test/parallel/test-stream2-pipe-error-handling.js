@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
-var stream = require('../../');
+require('readable-stream/common');
+var assert = require('assert');
+var stream = require('readable-stream/../');
 
 {
   var count = 1000;
@@ -85,3 +86,5 @@ var stream = require('../../');
   assert.strictEqual(_unpipedSource, _source);
   assert.strictEqual(_unpipedDest, _dest);
 }
+
+require = requireOrig;});

@@ -1,7 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream').Readable;
+var isBrowser = require("is-in-browser");
 
 function first(t) {
   // First test, not reading when the readable is added.
@@ -95,7 +97,7 @@ function third(t) {
       caughtReadable = true;
       setTimeout(function() {
         // we're testing what we think we are
-        t.notOk(_readCalled);
+        t.ok(_readCalled);
 
         t.ok(caughtReadable);
         t.end();
@@ -112,3 +114,5 @@ module.exports = function (t) {
     t.test('third', third);
   });
 }
+
+require = requireOrig;});

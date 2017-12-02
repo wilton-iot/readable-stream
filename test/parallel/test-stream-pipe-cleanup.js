@@ -1,11 +1,12 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
 // This test asserts that Stream.prototype.pipe does not leave listeners
 // hanging on the source or dest.
-require('../common');
-var stream = require('../../');
-var assert = require('assert/');
+require('readable-stream/common');
+var stream = require('readable-stream/../');
+var assert = require('assert');
 var util = require('util');
 
 (function () {
@@ -106,3 +107,5 @@ var util = require('util');
   assert.strictEqual(w.listeners('end').length, 0);
   assert.strictEqual(w.listeners('close').length, 0);
 })();
+
+require = requireOrig;});

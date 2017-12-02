@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 
-var Writable = require('../../').Writable;
+var Writable = require('readable-stream/../').Writable;
 
 var _writeCalled = false;
 function _write(d, e, n) {
@@ -35,3 +36,5 @@ process.on('exit', function () {
   assert.strictEqual(dLength, 2);
   assert(_writevCalled);
 });
+
+require = requireOrig;});

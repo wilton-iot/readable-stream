@@ -1,9 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream');
 var Readable = stream.Readable;
 var Writable = stream.Writable;
+var nextTick = require("process-nextick-args");
 
 module.exports = function (t){
   t.test('pause then read', function (t) {
@@ -18,7 +20,7 @@ module.exports = function (t){
       if (!(chunks % 2))
         setImmediate(push);
       else if (!(chunks % 3))
-        process.nextTick(push);
+        nextTick(push);
       else
         push();
     };
@@ -148,3 +150,5 @@ module.exports = function (t){
     }
   });
 }
+
+require = requireOrig;});

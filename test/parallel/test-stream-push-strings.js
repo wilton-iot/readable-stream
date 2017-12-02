@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 var util = require('util');
 
 util.inherits(MyStream, Readable);
@@ -47,3 +48,5 @@ process.on('exit', function () {
   assert.deepStrictEqual(results, expect);
   console.log('ok');
 });
+
+require = requireOrig;});

@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 require('babel-polyfill');
 var util = require('util');
@@ -32,7 +33,7 @@ var fs = require('fs');
 var assert = require('assert');
 var os = require('os');
 var child_process = require('child_process');
-var stream = require('../');
+var stream = require('readable-stream');
 
 /*<replacement>*/
 var util = require('core-util-is');
@@ -649,3 +650,5 @@ if (!util._errnoException) {
     return e;
   };
 }
+
+require = requireOrig;});

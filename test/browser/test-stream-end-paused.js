@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('../common');
 
 
 // Make sure we don't miss the end event for paused 0-length streams
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream').Readable;
 var stream = new Readable();
 module.exports = function (t) {
   t.test('end pause', function (t) {
@@ -23,10 +24,14 @@ module.exports = function (t) {
 
     setTimeout(function() {
       stream.on('end', function() {
+          print("eeee")
         t.ok(calledRead);
       });
+      print("staert")
       stream.resume();
     });
 
   });
 }
+
+require = requireOrig;});

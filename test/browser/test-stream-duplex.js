@@ -1,7 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('../common');
 
-var Duplex = require('../../').Transform;
+var Duplex = require('readable-stream').Transform;
 
 var stream = new Duplex({ objectMode: true });
 module.exports = function (t) {
@@ -24,12 +25,15 @@ module.exports = function (t) {
       read = obj;
     });
 
-    stream.push({ val: 1 });
-    stream.end({ val: 2 });
-
     stream.on('end', function() {
       t.equal(read.val, 1);
       t.equal(written.val, 2);
     });
+
+    stream.push({ val: 1 });
+    stream.end({ val: 2 });
+
   });
 }
+
+require = requireOrig;});

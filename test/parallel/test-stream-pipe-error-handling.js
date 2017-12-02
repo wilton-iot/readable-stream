@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var assert = require('assert/');
+var common = require('readable-stream/common');
+var assert = require('assert');
 var Stream = require('stream').Stream;
 
 {
@@ -40,8 +41,8 @@ var Stream = require('stream').Stream;
 }
 
 {
-  var R = require('../../').Readable;
-  var W = require('../../').Writable;
+  var R = require('readable-stream/../').Readable;
+  var W = require('readable-stream/../').Writable;
 
   var r = new R();
   var w = new W();
@@ -67,8 +68,8 @@ var Stream = require('stream').Stream;
 }
 
 {
-  var _R = require('../../').Readable;
-  var _W = require('../../').Writable;
+  var _R = require('readable-stream/../').Readable;
+  var _W = require('readable-stream/../').Writable;
 
   var _r = new _R();
   var _w = new _W();
@@ -89,3 +90,5 @@ var Stream = require('stream').Stream;
   _w.removeListener('error', function () {});
   _removed = true;
 }
+
+require = requireOrig;});

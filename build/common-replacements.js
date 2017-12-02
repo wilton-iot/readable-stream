@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 module.exports.altForEachImplReplacement = [
     /$/
   ,   '\nfunction forEach (xs, f) {\n'
@@ -52,3 +53,5 @@ module.exports.bufferStaticMethods = [
   /Buffer\.((?:alloc)|(?:allocUnsafe)|(?:from))/g,
   `bufferShim.$1`
 ]
+
+require = requireOrig;});

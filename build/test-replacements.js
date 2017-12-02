@@ -1,15 +1,16 @@
-const altForEachImplReplacement = require('./common-replacements').altForEachImplReplacement
-    , altForEachUseReplacement  = require('./common-replacements').altForEachUseReplacement
-    , altIndexOfImplReplacement = require('./common-replacements').altIndexOfImplReplacement
-    , altIndexOfUseReplacement  = require('./common-replacements').altIndexOfUseReplacement
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+const altForEachImplReplacement = require('readable-stream/common-replacements').altForEachImplReplacement
+    , altForEachUseReplacement  = require('readable-stream/common-replacements').altForEachUseReplacement
+    , altIndexOfImplReplacement = require('readable-stream/common-replacements').altIndexOfImplReplacement
+    , altIndexOfUseReplacement  = require('readable-stream/common-replacements').altIndexOfUseReplacement
     , objectKeysDefine =
-    require('./common-replacements').objectKeysDefine
+    require('readable-stream/common-replacements').objectKeysDefine
     , objectKeysReplacement =
-    require('./common-replacements').objectKeysReplacement
+    require('readable-stream/common-replacements').objectKeysReplacement
     , bufferShimFix =
-    require('./common-replacements').bufferShimFix
+    require('readable-stream/common-replacements').bufferShimFix
     , bufferStaticMethods =
-    require('./common-replacements').bufferStaticMethods
+    require('readable-stream/common-replacements').bufferStaticMethods
 
 module.exports.all = [
     [
@@ -311,3 +312,5 @@ module.exports['test-stream-transform-constructor-set-methods.js'] = [
     'Error: .*[Nn]'
   ]
 ]
+
+require = requireOrig;});

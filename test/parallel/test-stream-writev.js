@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var assert = require('assert/');
+var common = require('readable-stream/common');
+var assert = require('assert');
 
-var stream = require('../../');
+var stream = require('readable-stream/../');
 
 var queue = [];
 for (var decode = 0; decode < 2; decode++) {
@@ -81,3 +82,5 @@ function test(decode, uncork, multi, next) {
     next();
   });
 }
+
+require = requireOrig;});

@@ -1,8 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream').Readable;
 var inherits = require('inherits');
+var nextTick = require("process-nextick-args");
 
 module.exports = function (t) {
   t.test('push strings', function (t) {
@@ -24,7 +26,7 @@ module.exports = function (t) {
         case 2:
           return this.push('second to last chunk');
         case 3:
-          return process.nextTick(function() {
+          return nextTick(function() {
             this.push('first chunk');
           }.bind(this));
         default:
@@ -47,3 +49,5 @@ module.exports = function (t) {
     });
   });
 }
+
+require = requireOrig;});

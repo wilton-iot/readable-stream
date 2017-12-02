@@ -1,12 +1,13 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 
 // This test verifies that stream.unshift(bufferShim.alloc(0)) or
 // stream.unshift('') does not set state.reading=false.
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 var r = new Readable();
 var nChunks = 10;
@@ -41,3 +42,5 @@ r.on('end', function () {
   assert.deepStrictEqual(seen, expect);
   console.log('ok');
 });
+
+require = requireOrig;});

@@ -1,13 +1,14 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
+var common = require('readable-stream/common');
 
 // Testing Readable Stream resumeScheduled state
 
-var assert = require('assert/');
+var assert = require('assert');
 
-var _require = require('../../'),
+var _require = require('readable-stream/../'),
     Readable = _require.Readable,
     Writable = _require.Writable;
 
@@ -74,3 +75,5 @@ var _require = require('../../'),
     assert.strictEqual(_r2._readableState.resumeScheduled, false);
   }));
 }
+
+require = requireOrig;});

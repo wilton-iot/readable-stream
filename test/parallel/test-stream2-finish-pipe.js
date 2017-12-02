@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var stream = require('../../');
+require('readable-stream/common');
+var stream = require('readable-stream/../');
 var Buffer = require('buffer').Buffer;
 
 var r = new stream.Readable();
@@ -21,3 +22,5 @@ r.pipe(w);
 // `socket.allowHalfOpen === false`, EOF will cause `.destroySoon()` call which
 // ends the writable side of net.Socket.
 w.end();
+
+require = requireOrig;});

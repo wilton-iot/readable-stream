@@ -1,7 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream');
 var inherits = require('inherits');
 
 function MyWritable(fn, options) {
@@ -43,3 +44,5 @@ module.exports = function (t) {
   t.test('decodeStringsTrue', decodeStringsTrue);
   t.test('decodeStringsFalse', decodeStringsFalse);
 }
+
+require = requireOrig;});

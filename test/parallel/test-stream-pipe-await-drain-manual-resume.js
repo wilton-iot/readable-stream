@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var stream = require('../../');
-var assert = require('assert/');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
+var assert = require('assert');
 
 // A consumer stream with a very low highWaterMark, which starts in a state
 // where it buffers the chunk it receives rather than indicating that they
@@ -77,3 +78,5 @@ writable.on('finish', common.mustCall(function () {
   assert.strictEqual(readable._readableState.awaitDrain, 0, 'awaitDrain not 0 after all chunks are written');
   // Everything okay, all chunks were written.
 }));
+
+require = requireOrig;});

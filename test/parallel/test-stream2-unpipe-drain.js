@@ -1,11 +1,12 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 (function () {
   /*<replacement>*/
   var bufferShim = require('buffer-shims');
   /*</replacement>*/
-  require('../common');
-  var assert = require('assert/');
+  require('readable-stream/common');
+  var assert = require('assert');
 
-  var stream = require('../../');
+  var stream = require('readable-stream/../');
   var util = require('util');
 
   function TestWriter() {
@@ -55,3 +56,5 @@
     assert.strictEqual(src2.reads, 2);
   });
 })();
+
+require = requireOrig;});

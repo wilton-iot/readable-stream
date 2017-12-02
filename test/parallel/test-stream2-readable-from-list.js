@@ -1,11 +1,12 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Flags: --expose_internals
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
-var fromList = require('../../lib/_stream_readable')._fromList;
-var BufferList = require('../../lib/internal/streams/BufferList');
+require('readable-stream/common');
+var assert = require('assert');
+var fromList = require('readable-stream/../lib/_stream_readable')._fromList;
+var BufferList = require('readable-stream/../lib/internal/streams/BufferList');
 
 // tiny node-tap lookalike.
 var tests = [];
@@ -98,3 +99,5 @@ test('strings', function (t) {
 
   t.end();
 });
+
+require = requireOrig;});

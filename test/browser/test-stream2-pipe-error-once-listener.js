@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
 var inherits = require('inherits');
-var stream = require('../../');
+var stream = require('readable-stream');
 
 module.exports = function (t) {
   t.test('pipe error once listener', function (t){
@@ -14,7 +15,7 @@ module.exports = function (t) {
 
     Read.prototype._read = function(size) {
       this.push('x');
-      this.push(null);
+        this.push(null);
     };
 
 
@@ -39,3 +40,5 @@ module.exports = function (t) {
     read.pipe(write);
   });
 }
+
+require = requireOrig;});

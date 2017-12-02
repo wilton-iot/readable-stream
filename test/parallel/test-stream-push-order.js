@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var Readable = require('../../').Readable;
-var assert = require('assert/');
+require('readable-stream/common');
+var Readable = require('readable-stream/../').Readable;
+var assert = require('assert');
 
 var s = new Readable({
   highWaterMark: 20,
@@ -31,3 +32,5 @@ process.on('exit', function () {
   assert.deepStrictEqual(s._readableState.buffer.join(','), '1,2,3,4,5,6');
   console.log('ok');
 });
+
+require = requireOrig;});

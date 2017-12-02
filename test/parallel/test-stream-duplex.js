@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
-var Duplex = require('../../').Transform;
+require('readable-stream/common');
+var assert = require('assert');
+var Duplex = require('readable-stream/../').Transform;
 
 var stream = new Duplex({ objectMode: true });
 
@@ -32,3 +33,5 @@ process.on('exit', function () {
   assert.strictEqual(read.val, 1);
   assert.strictEqual(written.val, 2);
 });
+
+require = requireOrig;});

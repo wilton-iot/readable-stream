@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
 
-var common = require('../common');
-var stream = require('../../');
-var assert = require('assert/');
+var common = require('readable-stream/common');
+var stream = require('readable-stream/../');
+var assert = require('assert');
 
 var transform = new stream.Transform({
   transform: _transform,
@@ -23,3 +24,5 @@ transform.write('asdasd', common.mustCall(function () {
 }));
 
 assert.strictEqual(transform._writableState.needDrain, true);
+
+require = requireOrig;});

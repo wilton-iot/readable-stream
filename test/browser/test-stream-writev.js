@@ -1,7 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var stream = require('../../');
+var stream = require('readable-stream');
 
 var queue = [];
 for (var decode = 0; decode < 2; decode++) {
@@ -103,3 +104,5 @@ function test(decode, uncork, multi) {
     });
   }
 }
+
+require = requireOrig;});

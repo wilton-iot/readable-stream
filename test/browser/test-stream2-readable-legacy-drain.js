@@ -1,8 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Stream = require('../../');
-var Readable = require('../../').Readable;
+var Stream = require('readable-stream');
+var Readable = require('readable-stream').Readable;
+var nextTick = require("process-nextick-args");
 module.exports = function (t) {
   t.test('readable legacy drain', function (t) {
     var r = new Readable();
@@ -23,7 +25,7 @@ module.exports = function (t) {
     w.write = function(c) {
       writes += c.length;
       buffered += c.length;
-      process.nextTick(drain);
+      nextTick(drain);
       return false;
     };
 
@@ -50,3 +52,5 @@ module.exports = function (t) {
     r.pipe(w);
 });
 }
+
+require = requireOrig;});

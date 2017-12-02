@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 
-var Transform = require('../../').Transform;
+var Transform = require('readable-stream/../').Transform;
 
 var parser = new Transform({ readableObjectMode: true });
 
@@ -51,3 +52,5 @@ serializer.write({ val: 42 });
 process.on('exit', function () {
   assert.strictEqual(serialized[0], 42);
 });
+
+require = requireOrig;});

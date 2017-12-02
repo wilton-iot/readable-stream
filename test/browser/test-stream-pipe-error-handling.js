@@ -1,11 +1,14 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
-var Stream = require('stream').Stream;
+//var common = require('readable-stream/common');
+var Stream = require('readable-stream').Stream;
+var isBrowser = require("is-in-browser");
 
 module.exports = function (t) {
   t.test('Error Listener Catches', function (t) {
     t.plan(1);
     var source = new Stream();
+    source._read = function() {};
     var dest = new Stream();
 
     source.pipe(dest);
@@ -23,6 +26,7 @@ module.exports = function (t) {
   t.test('Error WithoutListener Throws', function (t) {
     t.plan(1);
     var source = new Stream();
+    source._read = function() {};
     var dest = new Stream();
 
     source.pipe(dest);
@@ -39,11 +43,13 @@ module.exports = function (t) {
     t.strictEqual(gotErr, err);
   });
 
+if (isBrowser) {
+
   t.test('Error With Removed Listener Throws', function (t) {
     t.plan(2);
     var EE = require('events').EventEmitter;
-    var R = require('../../').Readable;
-    var W = require('../../').Writable;
+    var R = require('readable-stream').Readable;
+    var W = require('readable-stream').Writable;
 
     var r = new R();
     var w = new W();
@@ -71,8 +77,8 @@ module.exports = function (t) {
   t.test('Error With Removed Listener Throws', function (t) {
     t.plan(2);
     var EE = require('events').EventEmitter;
-    var R = require('../../').Readable;
-    var W = require('../../').Writable;
+    var R = require('readable-stream').Readable;
+    var W = require('readable-stream').Writable;
 
     var r = new R();
     var w = new W();
@@ -99,4 +105,9 @@ module.exports = function (t) {
       caught = true;
     }
   });
+  
 }
+
+}
+
+require = requireOrig;});

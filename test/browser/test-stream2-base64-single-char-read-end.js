@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
 var common = require('../common');
 var R = require('../../lib/_stream_readable');
@@ -33,9 +34,11 @@ module.exports = function (t) {
 
   src.pipe(dst);
 
-  timeout = setTimeout(function() {
-    assert.fail('timed out waiting for _write');
-  }, 100);
+      timeout = setTimeout(function() {
+        assert.fail('timed out waiting for _write');
+      }, 100);
 
 })
 }
+
+require = requireOrig;});

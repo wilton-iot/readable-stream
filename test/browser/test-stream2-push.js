@@ -1,8 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
-var stream = require('../../');
+//var common = require('readable-stream/common');
+var stream = require('readable-stream');
 var Readable = stream.Readable;
 var Writable = stream.Writable;
+var nextTick = require("process-nextick-args");
 
 
 var inherits = require('inherits');
@@ -49,7 +51,7 @@ module.exports = function (t) {
     function readStop() {
       //console.error('readStop');
       reading = false;
-      process.nextTick(function() {
+      nextTick(function() {
         var r = stream.read();
         if (r !== null)
           writer.write(r);
@@ -73,7 +75,7 @@ module.exports = function (t) {
     writer._write = function(chunk, encoding, cb) {
       //console.error('WRITE %s', chunk);
       written.push(chunk);
-      process.nextTick(cb);
+      nextTick(cb);
     };
 
     writer.on('finish', finish);
@@ -118,3 +120,5 @@ module.exports = function (t) {
     }
   });
 };
+
+require = requireOrig;});

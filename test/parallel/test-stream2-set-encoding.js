@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
-var R = require('../../lib/_stream_readable');
+require('readable-stream/common');
+var assert = require('assert');
+var R = require('readable-stream/../lib/_stream_readable');
 var util = require('util');
 
 // tiny node-tap lookalike.
@@ -230,3 +231,5 @@ test('chainable', function (t) {
   t.equal(tr.setEncoding('utf8'), tr);
   t.end();
 });
+
+require = requireOrig;});

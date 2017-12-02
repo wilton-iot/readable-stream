@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var Readable = require('../../lib/_stream_readable');
-var assert = require('assert/');
+require('readable-stream/common');
+var Readable = require('readable-stream/../lib/_stream_readable');
+var assert = require('assert');
 
 var buf = '';
 var euro = new Buffer([0xE2, 0x82, 0xAC]);
@@ -23,3 +24,5 @@ readable.on('data', function (data) {
 process.on('exit', function () {
   assert.strictEqual(buf, '€¢');
 });
+
+require = requireOrig;});

@@ -1,7 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
-var Readable = require('../../lib/_stream_readable');
-var Writable = require('../../lib/_stream_writable');
+//var common = require('readable-stream/common');
+var Readable = require('readable-stream').Readable;
+var Writable = require('readable-stream').Writable;
+var nextTick = require("process-nextick-args");
 
 module.exports = function (t) {
 
@@ -94,7 +96,7 @@ module.exports = function (t) {
     var list = [{ one: '1'}, { two: '2' }];
     r._read = function(n) {
       var item = list.shift();
-      process.nextTick(function() {
+      nextTick(function() {
         r.push(item || null);
       });
     };
@@ -304,3 +306,5 @@ module.exports = function (t) {
     }
   }
 };
+
+require = requireOrig;});

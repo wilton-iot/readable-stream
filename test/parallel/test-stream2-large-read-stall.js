@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var assert = require('assert/');
+var common = require('readable-stream/common');
+var assert = require('assert');
 
 // If everything aligns so that you do a read(n) of exactly the
 // remaining buffer, then make sure that 'end' still emits.
@@ -12,7 +13,7 @@ var PUSHSIZE = 20;
 var PUSHCOUNT = 1000;
 var HWM = 50;
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 var r = new Readable({
   highWaterMark: HWM
 });
@@ -48,3 +49,5 @@ function push() {
   ;false && console.error('   push #%d', pushes);
   if (r.push(bufferShim.allocUnsafe(PUSHSIZE))) setTimeout(push, 1);
 }
+
+require = requireOrig;});

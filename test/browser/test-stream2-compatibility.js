@@ -1,5 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var R = require('../../lib/_stream_readable');
+var R = require('readable-stream').Readable;
 var inherits = require('inherits');
 var EE = require('events').EventEmitter;
 module.exports = function (t) {
@@ -31,3 +32,5 @@ module.exports = function (t) {
     });
   });
 }
+
+require = requireOrig;});

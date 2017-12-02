@@ -2,7 +2,7 @@
   "name": "readable-stream",
   "version": "2.2.9",
   "description": "Streams3, a user-land copy of the stream library from Node.js",
-  "main": "readable.js",
+  "main": "readable-browser.js",
   "dependencies": {
     "buffer-shims": "~1.0.0",
     "core-util-is": "~1.0.0",
@@ -50,5 +50,21 @@
       "lib/**.js"
     ]
   },
-  "license": "MIT"
+  "license": "MIT",
+   "wilton": {
+      "excludes": [
+        "build",
+        "doc",
+        "examples",
+        "lib/internal/streams/stream.js",
+        "test",
+        "duplex-browser.js",
+        "duplex.js",
+        "passthrough.js",
+        "readable.js",
+        "transform.js",
+        "writable-browser.js",
+        "writable.js"
+      ]
+    }
 }

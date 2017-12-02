@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
 
-var common = require('../common');
-var assert = require('assert/');
-var stream = require('../../');
+var common = require('readable-stream/common');
+var assert = require('assert');
+var stream = require('readable-stream/../');
 
 var writable = new stream.Writable();
 
@@ -57,3 +58,5 @@ function uncork() {
   assert.strictEqual(writable._writableState.corked, 0);
   assert.strictEqual(writable._writableState.bufferedRequestCount, 0);
 }
+
+require = requireOrig;});

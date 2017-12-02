@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var W = require('../../lib/_stream_writable');
-var D = require('../../lib/_stream_duplex');
-var assert = require('assert/');
+require('readable-stream/common');
+var W = require('readable-stream/../lib/_stream_writable');
+var D = require('readable-stream/../lib/_stream_duplex');
+var assert = require('assert');
 
 var util = require('util');
 util.inherits(TestWriter, W);
@@ -366,3 +367,5 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
+
+require = requireOrig;});

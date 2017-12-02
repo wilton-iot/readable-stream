@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 var util = require('util');
-var stream = require('../../');
+var stream = require('readable-stream/../');
 
 var passed = false;
 
@@ -59,3 +60,5 @@ function indexOf(xs, x) {
   }
   return -1;
 }
+
+require = requireOrig;});

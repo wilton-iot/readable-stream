@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var assert = require('assert/');
-var Readable = require('../../lib/_stream_readable');
+var common = require('readable-stream/common');
+var assert = require('assert');
+var Readable = require('readable-stream/../lib/_stream_readable');
 
 var len = 0;
 var chunks = new Array(10);
@@ -51,3 +52,5 @@ function next() {
   r = test.read();
   assert.strictEqual(r, null);
 }
+
+require = requireOrig;});

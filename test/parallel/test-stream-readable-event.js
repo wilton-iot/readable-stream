@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-var common = require('../common');
-var assert = require('assert/');
+var common = require('readable-stream/common');
+var assert = require('assert');
 
-var Readable = require('../../').Readable;
+var Readable = require('readable-stream/../').Readable;
 
 {
   // First test, not reading when the readable is added.
@@ -64,3 +65,5 @@ var Readable = require('../../').Readable;
     _r2.on('readable', common.mustCall(function () {}));
   }, 1);
 }
+
+require = requireOrig;});

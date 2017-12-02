@@ -1,7 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
 
-var Transform = require('../../').Transform;
+var Transform = require('readable-stream').Transform;
 module.exports = function (t) {
   t.test('transform constructor set methods', function (t) {
     var _transformCalled = false;
@@ -21,9 +22,6 @@ module.exports = function (t) {
       flush: _flush
     });
 
-    tr.end(new Buffer('blerg'));
-    tr.resume();
-
     tr.on('end', function() {
       t.equal(tr._transform, _transform);
       t.equal(tr._flush, _flush);
@@ -31,5 +29,11 @@ module.exports = function (t) {
       t.ok(_flushCalled);
       t.end();
     });
+
+    tr.end(new Buffer('blerg'));
+    tr.resume();
+
   });
 }
+
+require = requireOrig;});

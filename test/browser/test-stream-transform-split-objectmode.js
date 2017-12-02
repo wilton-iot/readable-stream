@@ -1,7 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('readable-stream/common');
+var isBrowser = require("is-in-browser");
 
-var Transform = require('../../').Transform;
+var Transform = require('readable-stream').Transform;
 module.exports = function (t) {
   t.test('transform split objectmode', function (t) {
     t.plan(10);
@@ -54,5 +56,10 @@ module.exports = function (t) {
     setImmediate(function () {
       serializer.end();
     });
+    if (!isBrowser) {
+        t.equals(serialized[0], 42, 'searlizer ended');
+    }
   });
 }
+
+require = requireOrig;});

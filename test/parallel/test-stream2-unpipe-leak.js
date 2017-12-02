@@ -1,9 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
-var stream = require('../../');
+require('readable-stream/common');
+var assert = require('assert');
+var stream = require('readable-stream/../');
 
 var chunk = bufferShim.from('hallo');
 
@@ -54,3 +55,5 @@ process.on('exit', function () {
   assert(src._readableState.length >= src._readableState.highWaterMark);
   console.log('ok');
 });
+
+require = requireOrig;});

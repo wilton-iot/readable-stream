@@ -1,11 +1,12 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
 
-require('../common');
+require('readable-stream/common');
 
-var assert = require('assert/');
-var Transform = require('../../').Transform;
+var assert = require('assert');
+var Transform = require('readable-stream/../').Transform;
 
 var expected = 'asdf';
 
@@ -25,3 +26,5 @@ t.end(bufferShim.from('blerg'));
 t.on('data', function (data) {
   assert.strictEqual(data.toString(), expected);
 });
+
+require = requireOrig;});

@@ -1,5 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var Stream = require('../../');
+var Stream = require('readable-stream');
 
 module.exports = function (t) {
   t.tets('pipe without listenerCount', function (t) {
@@ -25,3 +26,5 @@ module.exports = function (t) {
 
   });
 }
+
+require = requireOrig;});

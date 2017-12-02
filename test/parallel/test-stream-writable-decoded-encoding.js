@@ -1,10 +1,11 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
-require('../common');
-var assert = require('assert/');
+require('readable-stream/common');
+var assert = require('assert');
 
-var stream = require('../../');
+var stream = require('readable-stream/../');
 var util = require('util');
 
 function MyWritable(fn, options) {
@@ -38,3 +39,5 @@ MyWritable.prototype._write = function (chunk, encoding, callback) {
   _m.write('some-text', 'utf8');
   _m.end();
 }
+
+require = requireOrig;});

@@ -1,11 +1,12 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /*<replacement>*/
 var bufferShim = require('buffer-shims');
 /*</replacement>*/
 
-require('../common');
+require('readable-stream/common');
 
-var assert = require('assert/');
-var stream = require('../../');
+var assert = require('assert');
+var stream = require('readable-stream/../');
 
 var writable = new stream.Writable();
 
@@ -34,3 +35,5 @@ writable.end('testing function end()', function () {
 // ending, ended = true.
 // finished = false.
 testStates(true, false, true);
+
+require = requireOrig;});

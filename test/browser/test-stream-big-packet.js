@@ -1,7 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
-var common = require('../common');
+//var common = require('../common');
 var inherits = require('inherits');
-var stream = require('../../');
+var stream = require('readable-stream');
 
 module.exports = function (t) {
   t.test('big packet', function (t) {
@@ -60,3 +61,5 @@ module.exports = function (t) {
     }
   });
 }
+
+require = requireOrig;});
