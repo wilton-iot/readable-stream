@@ -64,7 +64,8 @@
         "readable.js",
         "transform.js",
         "writable-browser.js",
-        "writable.js"
+        "writable.js",
+        "test.js"
       ]
     }
 }
